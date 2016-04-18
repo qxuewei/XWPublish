@@ -2,14 +2,22 @@
 发布状态
 =======
 
-使用方法:
+两行代码集成发布功能:
+*XWPublishController *publishVC = [[XWPublishController alloc] init];
+*[self presentViewController:publishVC animated:YES completion:nil];
+
+效果图:
+![](https://github.com/qxuewei/XWPublish/raw/master/演示gif/publicGif.gif)  
+
+具体使用方法:
 -------
-        *1.导入'XWPublish'文件夹到项目中
-        *2.导入 ' #import "XWPublishController.h" '
-        *3.在需要发布的按钮点击方法中
-            *XWPublishController *publishVC = [[XWPublishController alloc] init];
-            *[self presentViewController:publishVC animated:YES completion:nil];
--------
+*1.导入'XWPublish'文件夹到项目中
+*2.导入 ' #import "XWPublishController.h" '
+*3.在需要发布的按钮点击方法中
+    *XWPublishController *publishVC = [[XWPublishController alloc] init];
+    *[self presentViewController:publishVC animated:YES completion:nil];
+
+
 *在XWPublishController.m中submitToServer方法中编写上传服务器的代码
 
 -----
