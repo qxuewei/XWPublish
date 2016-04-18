@@ -141,7 +141,10 @@ static NSString * const reuseIdentifier = @"XWPhotoCell";
 }
 
 #pragma mark - 图片cell点击事件
+//点击图片看大图
 - (void) tapProfileImage:(UITapGestureRecognizer *)gestureRecognizer{
+    [self.view endEditing:YES];
+    
     UIImageView *tableGridImage = (UIImageView*)gestureRecognizer.view;
     NSInteger index = tableGridImage.tag;
     

@@ -8,16 +8,21 @@
 
 #import "XWPublishController.h"
 
+//默认最大输入字数为  kMaxTextCount  300
+#define kMaxTextCount 300
+
 #define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height//获取设备高度
 #define SCREENWIDTH [UIScreen mainScreen].bounds.size.width//获取设备宽度
 
-@interface XWPublishController ()<UITextViewDelegate>{
+@interface XWPublishController ()<UITextViewDelegate,UIScrollViewDelegate>{
  
     //备注文本View高度
     float noteTextHeight;
     float pickerViewHeight;
     float allViewHeight;
 }
+
+
 
 
 /**
@@ -37,6 +42,7 @@
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
     
+    [_mianScrollView setDelegate:self];
     self.showInView = _mianScrollView;
     
     [self initPickerView];
@@ -49,17 +55,17 @@
 - (void)viewTapped{
     [self.view endEditing:YES];
 }
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"caseLogNeedRef" object:nil];
-}
+/**
+ *  初始化视图
+ */
 - (void)initViews{
-    
     _noteTextBackgroudView = [[UIView alloc]init];
     _noteTextBackgroudView.backgroundColor = [UIColor colorWithWhite:1 alpha:1];
     
+    //文本输入框
     _noteTextView = [[UITextView alloc]init];
-    //文字颜色
+    _noteTextView.keyboardType = UIKeyboardTypeDefault;
+    //文字样式
     [_noteTextView setFont:[UIFont fontWithName:@"Heiti SC" size:15.5]];
 //    _noteTextView.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     [_noteTextView setTextColor:[UIColor blackColor]];
@@ -71,10 +77,11 @@
     _textNumberLabel.font = [UIFont boldSystemFontOfSize:12];
     _textNumberLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     _textNumberLabel.backgroundColor = [UIColor whiteColor];
-    _textNumberLabel.text = @"0/300    ";
+    _textNumberLabel.text = [NSString stringWithFormat:@"0/%d    ",kMaxTextCount];
     
     _explainLabel = [[UILabel alloc]init];
-    _explainLabel.text = @"添加图片不超过9张，文字备注不超过300字";
+//    _explainLabel.text = @"添加图片不超过9张，文字备注不超过300字";
+    _explainLabel.text = [NSString stringWithFormat:@"添加图片不超过9张，文字备注不超过%d字",kMaxTextCount];
     //发布按钮颜色
     _explainLabel.textColor = [UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:199.0/255.0 alpha:1.0];
     _explainLabel.textAlignment = NSTextAlignmentCenter;
@@ -84,7 +91,7 @@
     _submitBtn = [[UIButton alloc]init];
     [_submitBtn setTitle:@"发布" forState:UIControlStateNormal];
     [_submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_submitBtn setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:155.0/255.0 blue:0.0/255.0 alpha:1.0]];
+    [_submitBtn setBackgroundColor:[UIColor colorWithRed:243.0/255.0 green:60.0/255.0 blue:62.0/255.0 alpha:1.0]];
     
     //圆角
     //设置圆角
@@ -103,6 +110,9 @@
     
     [self updateViewsFrame];
 }
+/**
+ *  界面布局 frame
+ */
 - (void)updateViewsFrame{
     
     if (!allViewHeight) {
@@ -140,17 +150,30 @@
     _mianScrollView.contentSize = self.mianScrollView.contentSize = CGSizeMake(0,allViewHeight);
 }
 
+/**
+ *  恢复原始界面布局
+ */
+-(void)resumeOriginalFrame{
+    _noteTextBackgroudView.frame = CGRectMake(0, 0, SCREENWIDTH, noteTextHeight);
+    //文本编辑框
+    _noteTextView.frame = CGRectMake(15, 0, SCREENWIDTH - 30, noteTextHeight);
+    //文字个数提示Label
+    _textNumberLabel.frame = CGRectMake(0, _noteTextView.frame.origin.y + _noteTextView.frame.size.height-15, SCREENWIDTH-10, 15);
+}
+
 - (void)pickerViewFrameChanged{
     [self updateViewsFrame];
 }
 
+#pragma mark - UITextViewDelegate
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     
-    _textNumberLabel.text = [NSString stringWithFormat:@"%lu/300    ",(unsigned long)_noteTextView.text.length];
-    if (_noteTextView.text.length > 300) {
+     NSLog(@"当前输入框文字个数:%ld",_noteTextView.text.length);
+    //当前输入字数
+    _textNumberLabel.text = [NSString stringWithFormat:@"%lu/%d    ",(unsigned long)_noteTextView.text.length,kMaxTextCount];
+    if (_noteTextView.text.length > kMaxTextCount) {
         _textNumberLabel.textColor = [UIColor redColor];
-    }
-    else{
+    }else{
         _textNumberLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     }
     
@@ -158,43 +181,77 @@
     return YES;
 }
 
+//文本框每次输入文字都会调用  -> 更改文字个数提示框
 - (void)textViewDidChangeSelection:(UITextView *)textView{
-    _textNumberLabel.text = [NSString stringWithFormat:@"%lu/300    ",(unsigned long)_noteTextView.text.length];
-    if (_noteTextView.text.length > 300) {
+
+    NSLog(@"当前输入框文字个数:%ld",_noteTextView.text.length);
+    //
+    _textNumberLabel.text = [NSString stringWithFormat:@"%lu/%d    ",(unsigned long)_noteTextView.text.length,kMaxTextCount];
+    if (_noteTextView.text.length > kMaxTextCount) {
         _textNumberLabel.textColor = [UIColor redColor];
     }
     else{
         _textNumberLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     }
-    [self textChanged];
+        [self textChanged];
 }
 
+/**
+ *  文本高度自适应
+ */
 -(void)textChanged{
     
     CGRect orgRect = self.noteTextView.frame;//获取原始UITextView的frame
     
+    //获取尺寸
     CGSize size = [self.noteTextView sizeThatFits:CGSizeMake(self.noteTextView.frame.size.width, MAXFLOAT)];
     
     orgRect.size.height=size.height+10;//获取自适应文本内容高度
     
+    
+    //如果文本框没字了恢复初始尺寸
     if (orgRect.size.height > 100) {
         noteTextHeight = orgRect.size.height;
+    }else{
+        noteTextHeight = 100;
     }
+    
     [self updateViewsFrame];
 }
 
+/**
+ *  发布按钮点击事件
+ */
 - (void)submitBtnClicked{
-    
+    //检查输入
     if (![self checkInput]) {
         return;
     }
+    //输入正确将数据上传服务器->
     [self submitToServer];
 }
 
 #pragma maek - 检查输入
 - (BOOL)checkInput{
+    //文本框没字
     if (_noteTextView.text.length == 0) {
+        NSLog(@"文本框没字");
         //MBhudText(self.view, @"请添加记录备注", 1);
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"请输入文字" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionCacel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:actionCacel];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        return NO;
+    }
+    
+    //文本框字数超过300
+    if (_noteTextView.text.length > kMaxTextCount) {
+        NSLog(@"文本框字数超过300");
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"超出文字限制" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionCacel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:actionCacel];
+        [self presentViewController:alertController animated:YES completion:nil];
         return NO;
     }
     return YES;
@@ -209,8 +266,9 @@
     //小图数组
     NSArray *smallImageArray = self.imageArray;
     
-    //小图数据
+    //小图二进制数据
     NSMutableArray *smallImageDataArray = [NSMutableArray array];
+    
     for (UIImage *smallImg in smallImageArray) {
         NSData *smallImgData = UIImagePNGRepresentation(smallImg);
         [smallImageDataArray addObject:smallImgData];
@@ -225,5 +283,25 @@
     NSLog(@"内存警告...");
 }
 - (IBAction)cancelClick:(UIButton *)sender {
+    NSLog(@"取消");
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *actionCacel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *actionGiveUpPublish = [UIAlertAction actionWithTitle:@"放弃上传" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertController addAction:actionCacel];
+    [alertController addAction:actionGiveUpPublish];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+//    NSLog(@"偏移量 scrollView.contentOffset.y:%f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y < 0) {
+        [self.view endEditing:YES];
+    }
+    //NSLog(@"scrollViewDidScroll");
 }
 @end
