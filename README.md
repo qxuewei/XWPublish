@@ -21,7 +21,9 @@
 *在XWPublishController.m中submitToServer方法中编写上传服务器的代码
 
 -----
-*如果在文本输入框中长按复制,粘贴为英文,可以在info.plist中添加Localized resources can be mixed,设置为YES. 
+*textfield或者textview中长按出现的(全选，复制，粘贴)显示成中文
+如果在文本输入框中长按复制,粘贴为英文,可以在info.plist中添加Localized resources can be mixed,设置为YES. 
+来获取当前手机的语言
 
 
 [ 我的博客 ]( http://blog.csdn.net/qxuewei )
