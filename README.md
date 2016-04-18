@@ -3,10 +3,10 @@
 =======
 
 两行代码集成发布功能:
-
-*XWPublishController *publishVC = [[XWPublishController alloc] init];
-*[self presentViewController:publishVC animated:YES completion:nil];
-
+-----
+  XWPublishController *publishVC = [[XWPublishController alloc] init];
+  [self presentViewController:publishVC animated:YES completion:nil];
+----
 效果图:
 ![](https://github.com/qxuewei/XWPublish/raw/master/演示gif/publicGif.gif)  
 
