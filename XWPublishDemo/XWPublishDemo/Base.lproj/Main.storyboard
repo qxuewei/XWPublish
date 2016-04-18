@@ -19,9 +19,22 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOc-az-3Z5">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="J1c-tV-hgo"/>
+                                    <constraint firstAttribute="width" constant="94" id="Tep-fg-9xU"/>
+                                </constraints>
                                 <state key="normal" title="发布"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="153" y="278" width="94" height="43"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="J1c-tV-hgo"/>
+                                        <exclude reference="Tep-fg-9xU"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="J1c-tV-hgo"/>
+                                        <include reference="Tep-fg-9xU"/>
+                                    </mask>
                                 </variation>
                                 <connections>
                                     <action selector="publish:" destination="BYZ-38-t0r" eventType="touchUpInside" id="90C-96-NiQ"/>
@@ -29,14 +42,26 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TOc-az-3Z5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kaU-Fm-gOx"/>
+                            <constraint firstItem="TOc-az-3Z5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wjO-8s-yXY"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="TOc-az-3Z5"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="kaU-Fm-gOx"/>
+                                <exclude reference="wjO-8s-yXY"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="TOc-az-3Z5"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="kaU-Fm-gOx"/>
+                                <include reference="wjO-8s-yXY"/>
                             </mask>
                         </variation>
                     </view>

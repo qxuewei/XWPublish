@@ -127,7 +127,6 @@
     //文本编辑框
     _noteTextView.frame = CGRectMake(15, 0, SCREENWIDTH - 30, noteTextHeight);
     
-    
     //文字个数提示Label
     _textNumberLabel.frame = CGRectMake(0, _noteTextView.frame.origin.y + _noteTextView.frame.size.height-15, SCREENWIDTH-10, 15);
     
@@ -257,7 +256,7 @@
     return YES;
 }
 
-
+#warning 在此处上传服务器->>
 #pragma mark - 上传数据到服务器前将图片转data（上传服务器用form表单：未写）
 - (void)submitToServer{
     //大图数据
@@ -274,6 +273,12 @@
         [smallImageDataArray addObject:smallImgData];
     }
     NSLog(@"上传服务器...");
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"发布成功!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionCacel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertController addAction:actionCacel];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 
@@ -295,6 +300,7 @@
 }
 
 #pragma mark - UIScrollViewDelegate
+//用户向上偏移到顶端取消输入,增强用户体验
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
