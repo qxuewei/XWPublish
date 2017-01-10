@@ -259,6 +259,9 @@
 #warning 在此处上传服务器->>
 #pragma mark - 上传数据到服务器前将图片转data（上传服务器用form表单：未写）
 - (void)submitToServer{
+    
+    // 可以选择上传大图数据或者小图数据->
+    
     //大图数据
     NSArray *bigImageDataArray = [self getBigImageArray];
     
@@ -272,7 +275,7 @@
         NSData *smallImgData = UIImagePNGRepresentation(smallImg);
         [smallImageDataArray addObject:smallImgData];
     }
-    NSLog(@"上传服务器...");
+    NSLog(@"上传服务器... +++ 文本内容:%@",_noteTextView.text);
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"发布成功!" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionCacel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self dismissViewControllerAnimated:YES completion:nil];
