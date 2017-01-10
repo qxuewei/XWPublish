@@ -1,4 +1,9 @@
 # XWPublish
+iOS 10以后需要在info.plist文件中额外加相机系统权限
+```
+<key>NSPhotoLibraryUsageDescription</key>  
+<string>系统使用您的相机权限</string>
+```
 发布状态
 =======
 
