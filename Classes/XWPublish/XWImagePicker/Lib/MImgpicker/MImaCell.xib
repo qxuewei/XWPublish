@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MImaCell">
+            <rect key="frame" x="0.0" y="0.0" width="265" height="338"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="265" height="338"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vJ7-Ej-tmV">
+                        <rect key="frame" x="0.0" y="0.0" width="265" height="338"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kns-vl-H2K">
+                        <rect key="frame" x="225" y="0.0" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="CAR-bE-lPm"/>
+                            <constraint firstAttribute="height" constant="40" id="qsc-AZ-5h8"/>
+                        </constraints>
+                        <state key="normal" image="ico_check_nomal@2x.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="actionBtn:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ZFB-k0-rwG"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="kns-vl-H2K" secondAttribute="trailing" id="1ul-RO-jqe"/>
+                <constraint firstItem="vJ7-Ej-tmV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CoM-d6-DiM"/>
+                <constraint firstAttribute="trailing" secondItem="vJ7-Ej-tmV" secondAttribute="trailing" id="gmZ-0m-4hR"/>
+                <constraint firstItem="vJ7-Ej-tmV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="k4v-MM-Mcu"/>
+                <constraint firstItem="kns-vl-H2K" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oPH-Vf-uKC"/>
+                <constraint firstAttribute="bottom" secondItem="vJ7-Ej-tmV" secondAttribute="bottom" id="qEv-1F-K5m"/>
+            </constraints>
+            <size key="customSize" width="265" height="338"/>
+            <connections>
+                <outlet property="btnCheckMark" destination="kns-vl-H2K" id="zEI-6F-SUB"/>
+                <outlet property="imavHead" destination="vJ7-Ej-tmV" id="acJ-Ya-pPD"/>
+            </connections>
+            <point key="canvasLocation" x="265.5" y="316"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ico_check_nomal@2x.png" width="40" height="40"/>
+    </resources>
+</document>

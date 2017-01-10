@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XWPublishController">
+            <connections>
+                <outlet property="cancelBtn" destination="dm2-ho-RxM" id="Uqn-7y-lbA"/>
+                <outlet property="mianScrollView" destination="q9r-FY-qt4" id="3du-N5-879"/>
+                <outlet property="titleLB" destination="mD5-Cj-jGf" id="7py-d0-EfA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9r-FY-qt4">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQ6-21-Lpl" userLabel="backgroundView">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享新鲜事" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mD5-Cj-jGf" userLabel="titleLB">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="S4d-Y2-4hj"/>
+                                <constraint firstAttribute="width" constant="218" id="ilw-1o-0Xl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="S4d-Y2-4hj"/>
+                                    <exclude reference="ilw-1o-0Xl"/>
+                                </mask>
+                            </variation>
+                            <variation key="widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="S4d-Y2-4hj"/>
+                                    <include reference="ilw-1o-0Xl"/>
+                                </mask>
+                            </variation>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="mD5-Cj-jGf" firstAttribute="top" secondItem="jQ6-21-Lpl" secondAttribute="top" id="5e0-zO-BAe"/>
+                        <constraint firstAttribute="bottom" secondItem="mD5-Cj-jGf" secondAttribute="bottom" id="gk3-YR-xUI"/>
+                        <constraint firstItem="mD5-Cj-jGf" firstAttribute="centerX" secondItem="jQ6-21-Lpl" secondAttribute="centerX" id="hQ6-rR-tJI"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="mD5-Cj-jGf"/>
+                        </mask>
+                        <mask key="constraints">
+                            <exclude reference="5e0-zO-BAe"/>
+                            <exclude reference="gk3-YR-xUI"/>
+                            <exclude reference="hQ6-rR-tJI"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="subviews">
+                            <include reference="mD5-Cj-jGf"/>
+                        </mask>
+                        <mask key="constraints">
+                            <include reference="5e0-zO-BAe"/>
+                            <include reference="gk3-YR-xUI"/>
+                            <include reference="hQ6-rR-tJI"/>
+                        </mask>
+                    </variation>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dm2-ho-RxM">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="HbC-Kz-NvK"/>
+                        <constraint firstAttribute="height" constant="44" id="kDN-Bz-raA"/>
+                    </constraints>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="HbC-Kz-NvK"/>
+                            <exclude reference="kDN-Bz-raA"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <mask key="constraints">
+                            <include reference="HbC-Kz-NvK"/>
+                            <include reference="kDN-Bz-raA"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="cancelClick:" destination="-1" eventType="touchUpInside" id="R0m-Gm-aDR"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="dm2-ho-RxM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="1Dn-8Q-GKw"/>
+                <constraint firstItem="q9r-FY-qt4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6o0-xC-aVK"/>
+                <constraint firstAttribute="trailing" secondItem="jQ6-21-Lpl" secondAttribute="trailing" id="CAZ-YR-Xpa"/>
+                <constraint firstItem="q9r-FY-qt4" firstAttribute="top" secondItem="jQ6-21-Lpl" secondAttribute="bottom" id="JOl-Be-Ll1"/>
+                <constraint firstAttribute="trailing" secondItem="q9r-FY-qt4" secondAttribute="trailing" id="Q7X-tS-fr1"/>
+                <constraint firstItem="q9r-FY-qt4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Wfo-HC-wR7"/>
+                <constraint firstItem="jQ6-21-Lpl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="eSI-pp-EJs"/>
+                <constraint firstAttribute="bottom" secondItem="q9r-FY-qt4" secondAttribute="bottom" id="esF-bo-jDg"/>
+                <constraint firstItem="jQ6-21-Lpl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qBD-zP-VdI"/>
+                <constraint firstItem="dm2-ho-RxM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="v2J-Ma-KNl"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="q9r-FY-qt4"/>
+                    <exclude reference="jQ6-21-Lpl"/>
+                    <exclude reference="dm2-ho-RxM"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="CAZ-YR-Xpa"/>
+                    <exclude reference="eSI-pp-EJs"/>
+                    <exclude reference="qBD-zP-VdI"/>
+                    <exclude reference="1Dn-8Q-GKw"/>
+                    <exclude reference="v2J-Ma-KNl"/>
+                    <exclude reference="6o0-xC-aVK"/>
+                    <exclude reference="JOl-Be-Ll1"/>
+                    <exclude reference="Q7X-tS-fr1"/>
+                    <exclude reference="Wfo-HC-wR7"/>
+                    <exclude reference="esF-bo-jDg"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="q9r-FY-qt4"/>
+                    <include reference="jQ6-21-Lpl"/>
+                    <include reference="dm2-ho-RxM"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="CAZ-YR-Xpa"/>
+                    <include reference="eSI-pp-EJs"/>
+                    <include reference="qBD-zP-VdI"/>
+                    <include reference="1Dn-8Q-GKw"/>
+                    <include reference="v2J-Ma-KNl"/>
+                    <include reference="6o0-xC-aVK"/>
+                    <include reference="JOl-Be-Ll1"/>
+                    <include reference="Q7X-tS-fr1"/>
+                    <include reference="Wfo-HC-wR7"/>
+                    <include reference="esF-bo-jDg"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="279.5" y="333.5"/>
+        </view>
+    </objects>
+</document>
