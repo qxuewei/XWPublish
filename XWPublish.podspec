@@ -78,7 +78,7 @@ s.description  = "发布状态,发布动态封装类,一行代码即可调用,iO
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/qxuewei/XWPublish.git", :tag => "#{0.0.1}" }
+  s.source       = { :git => "https://github.com/qxuewei/XWPublish.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -89,8 +89,8 @@ s.description  = "发布状态,发布动态封装类,一行代码即可调用,iO
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "Classes", "Classes/**/*.{h,m,png}"
+#  s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -131,6 +131,6 @@ s.description  = "发布状态,发布动态封装类,一行代码即可调用,iO
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-s.dependency "SDWebImage"
+#s.dependency "SDWebImage"
 
 end
