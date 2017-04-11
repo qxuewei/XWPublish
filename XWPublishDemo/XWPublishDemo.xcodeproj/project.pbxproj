@@ -434,7 +434,7 @@
 				TargetAttributes = {
 					2E1525C01CC086F300D0B933 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 83Z5ZTG53K;
+						DevelopmentTeam = ZE4J77P8N2;
 					};
 				};
 			};
@@ -641,7 +641,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 83Z5ZTG53K;
+				DEVELOPMENT_TEAM = ZE4J77P8N2;
 				INFOPLIST_FILE = XWPublishDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.csdn.net.qxuewei.XWPublishDemo;
@@ -654,7 +654,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 83Z5ZTG53K;
+				DEVELOPMENT_TEAM = ZE4J77P8N2;
 				INFOPLIST_FILE = XWPublishDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.csdn.net.qxuewei.XWPublishDemo;

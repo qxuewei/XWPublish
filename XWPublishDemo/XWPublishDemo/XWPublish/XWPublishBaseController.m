@@ -169,9 +169,11 @@ static NSString * const reuseIdentifier = @"XWPhotoCell";
 - (UIImage*)getBigIamgeWithALAsset:(ALAsset*)set{
     //压缩
     // 需传入方向和缩放比例，否则方向和尺寸都不对
-    UIImage *img = [UIImage imageWithCGImage:set.defaultRepresentation.fullResolutionImage
-                                       scale:set.defaultRepresentation.scale
-                                 orientation:(UIImageOrientation)set.defaultRepresentation.orientation];
+//    UIImage *img = [UIImage imageWithCGImage:set.defaultRepresentation.fullResolutionImage
+//                                       scale:set.defaultRepresentation.scale
+//                                 orientation:(UIImageOrientation)set.defaultRepresentation.orientation];
+    
+   UIImage *img = [UIImage imageWithCGImage:set.defaultRepresentation.fullResolutionImage scale:set.defaultRepresentation.scale orientation:UIImageOrientationUp];
     NSData *imageData = UIImageJPEGRepresentation(img, 0.5);
     [_bigImgDataArray addObject:imageData];
     
