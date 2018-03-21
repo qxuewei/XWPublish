@@ -18,6 +18,8 @@
 	<string>是否许允此App使用蓝牙？</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>是否允许此App使用日历？</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>系统使用您的相机权限</string>
 	<key>CFBundleAllowMixedLocalizations</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
